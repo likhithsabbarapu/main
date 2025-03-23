@@ -1,0 +1,143 @@
+<html>
+    <head>
+        <title>Student Info</title>
+        <style>
+            body {
+                
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                margin: 0;
+                background-color: #f0f0f0;
+            }
+
+            input, button {
+                width: 100%;
+                padding: 8px;
+                margin-bottom: 20px;
+                border-radius: 4px;
+                border: 1px solid #ccc;
+            }
+
+            button {
+                cursor: pointer;
+                font-size: 14px; 
+            }
+
+            button:hover {
+                opacity: 0.9;
+            }
+
+            #demo_div {
+                margin-top: 20px;
+                text-align: left;
+            }
+
+            h1 {
+                margin-bottom: 20px;
+            }
+
+            .search-bar {
+                margin-bottom: 10px;
+            }
+
+            .button-container {
+                display: flex;
+                justify-content: space-between;
+            }
+
+            .button-container button {
+                width: 30%; 
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Student Information</h1>
+            <input placeholder="Enter student name" id="name1" /><br>
+            <input placeholder="Enter SID" id="sid1" /><br>
+            <input placeholder="Enter Date of birth" id="dob1" /><br>
+            <input placeholder="Enter height" id="height1" /><br>
+            
+            <div class="button-container">
+                <button style="background-color:rgb(16, 240, 16)" onclick="show_my_info()">Insert</button>
+                <button style="background-color:rgb(16, 240, 16)" onclick="show_all_info()" id="show_info">Show info</button>
+                <button style="background-color:rgb(240, 16, 27)" onclick="clear_info()" id="clear_info">Clear info</button>
+            </div>
+
+            <input type="text" class="search-bar" placeholder="Search by name or SID" id="searchQuery" onkeyup="searchStudent()"><br>
+            <div id="demo_div"></div>
+        </div>
+
+        <script>
+            const studentArray = [];
+
+            class Student {
+                constructor(name, sid, dob, height) {
+                    this.name = name;
+                    this.sid = sid;
+                    this.dob = dob;
+                    this.height = height;
+                }
+                description() {
+                    return "Name: " + this.name + " SID: " + this.sid + " DOB: " + this.dob + ", Height: " + this.height;
+                }
+            }
+
+            function show_my_info() {
+                const me = new Student(
+                    document.getElementById("name1").value,
+                    document.getElementById("sid1").value,
+                    document.getElementById("dob1").value,
+                    document.getElementById("height1").value
+                );
+
+                studentArray.push(me);
+
+                document.getElementById("demo_div").innerHTML = me.description();
+
+                document.getElementById("name1").value = '';
+                document.getElementById("sid1").value = '';
+                document.getElementById("dob1").value = '';
+                document.getElementById("height1").value = '';
+            }
+
+            function show_all_info() {
+                let allInfo = "";
+                for (let i = 0; i < studentArray.length; i++) {
+                    allInfo += studentArray[i].description() + "<br>";
+                }
+                document.getElementById("demo_div").innerHTML = allInfo;
+            }
+
+            function clear_info() {
+                studentArray.length = 0; 
+                document.getElementById("demo_div").innerHTML = ""; 
+            }
+
+            function searchStudent() {
+                const query = document.getElementById("searchQuery").value.toLowerCase();
+                let searchResult = "";
+                let found = false;
+
+                for (let i = 0; i < studentArray.length; i++) {
+                    if (
+                        studentArray[i].name.toLowerCase().includes(query) ||
+                        studentArray[i].sid.toLowerCase().includes(query)
+                    ) {
+                        searchResult += studentArray[i].description() + "<br>";
+                        found = true;
+                    }
+                }
+
+                if (!found) {
+                    searchResult = "No student found with that name or SID.";
+                }
+
+                document.getElementById("demo_div").innerHTML = searchResult;
+            }
+        </script>
+    </body>
+</html>
+

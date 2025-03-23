@@ -1,0 +1,67 @@
+<html>
+    <head>STUDENT INFO</head><br>
+    <body>
+        <style>
+            .button{
+                margin-right:20px;
+            }
+        </style>
+        <input placeholder="Enter student name" id="name1"/>
+        <input placeholder="Enter SID" id="sid1"/><br>
+        <input placeholder="Enter Date of birth" id="dob1"/>
+        <input placeholder="Enter height" id="height1"/><br>
+        <button style="background-color:rgb(16, 240, 16) " onclick="show_my_info()">Insert</button>
+        <button style="background-color:rgb(16, 240, 16) " onclick="show_all_info()" id="show_info">show info</button>
+        <button style="background-color:rgb(240, 16, 27) " onclick="clear_info()" id="clear_info">Clear info</button>
+        <div id="demo_div"></div>
+        
+        <script>
+            const studentArray = []; 
+
+            class Student {
+                constructor(name, sid, dob, height) {
+                    this.name = name;
+                    this.sid = sid;
+                    this.dob = dob;
+                    this.height = height;
+                }
+                description() {
+                    return "I'm " + this.name + ", my SID is " + this.sid + ", born in " + this.dob + ", and my height is " + this.height;
+                }
+            }
+
+            function show_my_info() {
+                const me = new Student(
+                    document.getElementById("name1").value,
+                    document.getElementById("sid1").value,
+                    document.getElementById("dob1").value,
+                    document.getElementById("height1").value
+                );
+                
+                studentArray.push(me);
+
+                document.getElementById("demo_div").innerHTML = me.description();
+
+                document.getElementById("name1").value = '';
+                document.getElementById("sid1").value = '';
+                document.getElementById("dob1").value = '';
+                document.getElementById("height1").value = '';
+            }
+
+            function show_all_info() {
+                let allInfo = "";
+                let i = 0;
+                while (i < studentArray.length) {
+                    allInfo += studentArray[i].description() + "<br>";
+                    i++;
+                }
+                document.getElementById("demo_div").innerHTML = allInfo;
+
+            function clear_info()
+            {
+                  studentArray=[];  
+            }
+            }
+        </script>
+    </body>
+</html>

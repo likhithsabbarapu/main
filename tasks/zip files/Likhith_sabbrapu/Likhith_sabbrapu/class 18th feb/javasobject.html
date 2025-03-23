@@ -1,0 +1,24 @@
+<html>
+
+    <head>Object testing</head>
+    <body>
+
+        <button onclick="show_my_info()">output</button>
+        <div id="demo_div"></div>
+        <script>
+            const me={
+                name:"Likhith",
+                sid:"S00449075",
+                dob:"17th April 1999",
+                height:"6 1'",
+                description: function(){
+                    return "I'm "+this.name+ " my SID is "+this.sid+" born in "+this.dob+" height "+this.height;
+                }
+            };
+
+            function show_my_info(){
+                document.getElementById("demo_div").innerHTML=me.description();
+            }
+        </script>
+    </body>
+</html>

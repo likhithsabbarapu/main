@@ -1,0 +1,38 @@
+<html lang="en">
+<head>
+    <title>Document</title>
+</head>
+<body>
+    <input placeholder="Enter the value of X" id="num1"/>
+    <input placeholder="Enter the value of Y" id="num2"/>
+    <button onclick="calculate()">The sum is</button>
+       
+    <div id="output_span"></div>
+        
+    
+
+   
+    <script>
+        const colors=["red", "green", "blue","orange"];
+        let idx=0;
+        function calculate(){
+            let x = parseInt(document.getElementById("num1").value);
+            let y = parseInt(document.getElementById("num2").value);
+            let sum = 0;
+            if (x > y) {
+                alert("X should be less than or equal to Y.");
+                return;
+            }
+
+            let i = x;
+            do {
+                sum += i;
+                i++;
+            } while (i <= y);
+            document.getElementById("output_span").innerHTML = "The Sum:"+sum;
+            document.getElementById("output_span").style="color: "+colors[idx];
+            idx=(idx+1) % colors.length;
+        }
+    </script>
+</body>
+</html>

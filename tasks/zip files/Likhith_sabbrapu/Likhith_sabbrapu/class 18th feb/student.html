@@ -1,0 +1,29 @@
+<html>
+    <head>Object testing</head><br>
+    <body>
+        <input placeholder="Enter student name" id="name1"/><br>
+
+        <input placeholder="Enter SID" id="sid1"/><br>
+        <input placeholder="Date of birth" id="dob1"/><br>
+        <input placeholder="Enter height" id="height1"/><br>
+        <button onclick="show_my_info()">insert</button>
+        <button id="show_info">show info</button>
+        <div id="demo_div"></div>
+        <script>
+            const Stack = [];
+            function show_my_info(){
+                const me = {
+                    name: document.getElementById("name1").value,
+                    sid: document.getElementById("sid1").value,
+                    dob: document.getElementById("dob1").value,
+                    height: document.getElementById("height1").value,
+                    description: function(){
+                        return "I'm " + this.name + ", my SID is " + this.sid + ", born in " + this.dob + ", and my height is " + this.height;
+                    }
+                };
+                
+                document.getElementById("demo_div").innerHTML = me.description();
+            }
+        </script>
+    </body>
+</html>

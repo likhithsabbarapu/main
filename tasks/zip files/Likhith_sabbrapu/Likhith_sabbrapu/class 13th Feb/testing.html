@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Star Generator</title>
+    <style>
+        
+        
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+        }
+        #triangle {
+            white-space: pre;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <h1>Star Generator</h1>
+    <label for="numberInput"></label>
+    <input type="number" id="numberInput" min="1" required>
+    
+    <div id="triangle"></div>
+
+    <script>
+        const colors=["red", "green", "blue","orange"];
+        let idx=0;
+        document.getElementById('numberInput').addEventListener('input', generateTriangle);
+        function generateTriangle() {
+            const number = parseInt(document.getElementById('numberInput').value);
+            let triangle = '';
+            if (!isNaN(number) && number > 0) {
+                for (let i = 1; i <= number; i++) { 
+                    for (let j = 1; j <= i; j++) { 
+                        triangle += '* '; 
+                    }
+                    triangle += '\n';
+                }
+            }
+            document.getElementById('triangle').textContent = triangle;
+            document.getElementById('triangle').style="color: "+colors[idx];
+            idx=(idx+1) % colors.length;
+        }
+    </script>
+</body>
+</html>

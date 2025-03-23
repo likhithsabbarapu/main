@@ -1,0 +1,59 @@
+<html>
+    <h1>Random generator</h1>
+    <style>
+        button {
+            cursor: pointer;
+            font-size: 14px; 
+            margin-bottom: 20px;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+    </style>
+    <body>
+        
+        <div id="inputs">
+            <input placeholder="Enter Min range" id="Min"/>
+            <input placeholder="Enter Max range" id="Max"/><br>
+        
+        <button style="background-color:blue" onclick="generate()">Generate Random Number</button><br>
+        </div>
+        <p id="Result"></p>
+        <button style="background-color:green" onclick="recallResult()">Recall Last Result</button><br>
+
+        <script>
+            let lastRandomNumber = null; // Store the last generated random number
+            
+            function generate() {
+                let a = parseInt(document.getElementById("Min").value);
+                let b = parseInt(document.getElementById("Max").value);
+
+                let y = Math.floor(Math.random() * (b - a + 1)) + a;
+                document.getElementById("Result").innerText = "Random number: " + y;
+
+                // Save the random number
+                lastRandomNumber = y;
+
+                // Clear after 5 seconds
+                function clear() {
+                    document.getElementById("Result").innerHTML = "<h1>Gone!!!!</h1>";
+                    document.getElementById("inputs").innerHTML = "<h1>Vanished!!!!</h1>";
+                }
+                setTimeout(clear, 5000);
+            }
+
+            // Recall the last generated random number
+            function recallResult() {
+                if (lastRandomNumber !== null) {
+                    document.getElementById("Result").innerText = "Last generated random number: " + lastRandomNumber;
+                } else {
+                    document.getElementById("Result").innerText = "No number generated yet.";
+                }
+            }
+        </script>
+    </body>
+</html>

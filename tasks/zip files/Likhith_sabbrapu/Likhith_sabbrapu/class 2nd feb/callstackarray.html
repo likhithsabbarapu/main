@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Call-Stack</title>
+</head>
+<body>
+
+    <h1>CALL-STACK</h1>
+    
+    <input type="text" id="taskInput" placeholder="Enter Task Name">
+    <button id="addTaskButton">Add Task</button>
+    <button id="undoTaskButton">Undo Task</button>
+
+    <h2>Process Line:</h2>
+    <div id="taskList"></div>
+
+    <script>
+        const Stack = [];
+        const ListDiv = document.getElementById('taskList');
+
+        document.getElementById('addTaskButton').addEventListener('click', function() {
+            const taskInput = document.getElementById('taskInput');
+            const taskName = taskInput.value.trim();
+
+            if (taskName) {
+                Stack.push(taskName);
+                taskInput.value = '';
+                updateTaskList();
+            }
+        });
+
+        document.getElementById('undoTaskButton').addEventListener('click', function() {
+            Stack.pop();
+            updateTaskList();
+        });
+
+        function updateTaskList() {
+            ListDiv.innerHTML = Stack.join(" , ");
+        }
+    </script>
+
+</body>
+</html>

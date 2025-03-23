@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <style>
+      
+    </style>
+</head>
+<body>
+
+   
+    <input type="text" id="inputField" placeholder="Type something..." onkeyup="convertToUpper()">
+    <output id="outputField" placeholder="oupput" aria-disabled >
+
+    <script>
+        function convertToUpper() {
+           
+            const input = document.getElementById('inputField').value;
+           
+            const upperCaseInput = input.toUpperCase();
+            
+            document.getElementById('outputField').textContent = upperCaseInput;
+        }
+    </script>
+
+</body>
+</html>

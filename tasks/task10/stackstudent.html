@@ -1,0 +1,48 @@
+<html>
+    <head>Object testing</head><br>
+    <body>
+        <input placeholder="Enter student name" id="name1"/><br>
+        <input placeholder="Enter SID" id="sid1"/><br>
+        <input placeholder="Date of birth" id="dob1"/><br>
+        <input placeholder="Enter height" id="height1"/><br>
+        <button onclick="show_my_info()">insert</button>
+        <button onclick="show_all_info()" id="show_info">show info</button>
+        <div id="demo_div"></div>
+        
+        <script>
+            const studentArray = []; 
+
+            function show_my_info(){
+                const me = {
+                    name: document.getElementById("name1").value,
+                    sid: document.getElementById("sid1").value,
+                    dob: document.getElementById("dob1").value,
+                    height: document.getElementById("height1").value,
+                    description: function(){
+                        return "I'm " + this.name + ", my SID is " + this.sid + ", born in " + this.dob + ", and my height is " + this.height;
+                    }
+                };
+                
+                studentArray.push(me);
+
+                document.getElementById("demo_div").innerHTML = me.description();
+                document.getElementById("name1").value = '';
+                document.getElementById("sid1").value = '';
+                document.getElementById("dob1").value = '';
+                document.getElementById("height1").value = '';
+            }
+
+            function show_all_info(){
+                let allInfo = "";
+                let i=0;
+                
+                while (i < studentArray.length) {
+                    allInfo += studentArray[i].description() + "<br>";
+                    i++;
+                };
+
+                document.getElementById("demo_div").innerHTML = allInfo;
+            }
+        </script>
+    </body>
+</html>

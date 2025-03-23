@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Display Name</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+        }
+
+        .word {
+            display: flex;
+            gap: 10px;
+        }
+
+        .letter {
+            font-size: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .letter:hover {
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        /* Assign different colors for each letter */
+        .letter.L { color: #FF5733; } /* Orange */
+        .letter.i { color: #6933ff; } /* Green */
+        .letter.K { color: #ff3399; } /* Blue */
+        .letter.h { color: #b0d628; } /* Pink */
+        .letter.i { color: #d6a915; } /* Yellow */
+        .letter.t { color: #33FFF5; } /* Aqua */
+        .letter.t { color: #339e1e; } /* Aqua */
+    </style>
+</head>
+<body>
+    <div class="word">
+        <span class="letter l" data-hover="L">L</span>
+        <span class="letter i" data-hover="i">I</span>
+        <span class="letter k" data-hover="K">K</span>
+        <span class="letter h" data-hover="h">H</span>
+        <span class="letter i" data-hover="i">i</span>
+        <span class="letter t" data-hover="T">T</span>
+        <span class="letter h" data-hover="H">H</span>
+    </div>
+</body>
+</html>

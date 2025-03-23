@@ -1,0 +1,41 @@
+<html lang="en">
+<head>
+    <title>Document</title>
+</head>
+<body>
+    <input placeholder="Enter the value of X" id="num1"/>
+    <input placeholder="Enter the value of Y" id="num2"/>
+    
+    <div>
+        <input placeholder="Result will appear here" id="output_span" disabled/>
+    </div>
+
+    <div class="output_span">
+        <button onclick="calculate()">The sum is</button>
+    </div>          
+
+    <script>
+        function calculate(){
+            let x = parseInt(document.getElementById("num1").value);
+            let y = parseInt(document.getElementById("num2").value);
+            let sum = 0;
+            
+            // Ensure that x is always less than or equal to y
+            if (x > y) {
+                alert("X should be less than or equal to Y.");
+                return;
+            }
+
+            // Using a do-while loop to calculate the sum
+            let i = x;
+            do {
+                sum += i;
+                i++;
+            } while (i <= y);
+
+            // Display the result in the output input field
+            document.getElementById("output_span").value = sum;
+        }
+    </script>
+</body>
+</html>

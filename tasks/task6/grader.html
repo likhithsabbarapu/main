@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grade Calculator</title>
+</head>
+<body>
+    <h2 id="gradeDisplay">Your Grade: </h2>
+    <input type="number" id="scorei" placeholder="Enter score">
+
+    <script>
+        document.getElementById("scorei").addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                calculateGrade();
+            }
+        });
+
+        function calculateGrade() {
+            let score = document.getElementById("scorei").value;
+            let grade = "";
+
+            if (score >= 80) {
+                grade = "A";
+            } else if (score >= 60 && score <= 79) {
+                grade = "B";
+            } else if (score >= 50 && score <= 59) {
+                grade = "C";
+            } else if (score >= 40 && score <= 49) {
+                grade = "D";
+            } else {
+                grade = "F";
+            }
+
+            document.getElementById("gradeDisplay").innerText = "Your Grade: " + grade;
+        }
+    </script>
+</body>
+</html>
